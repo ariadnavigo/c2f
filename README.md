@@ -32,7 +32,7 @@ from standard input. The result is printed to standard output.
 
 ```
 $ echo '28' | c2f
-28.000000ºC = 82.400002ºF
+28.00ºC = 82.40ºF
 ```
 
 To convert the other way around, namely from Fahrenheit into Celsius, use the 
@@ -40,8 +40,12 @@ To convert the other way around, namely from Fahrenheit into Celsius, use the
 
 ```
 $ echo '70' | c2f -f
-70.000000ºF = 21.111111ºC
+70.00ºF = 21.11ºC
 ```
+
+Decimal precision in output is controlled by setting the ``OUTPUT_PREC`` macro 
+in a file named ``config.h``. If not present, the default in ``config.def.h``
+is used.
 
 ## License
 

@@ -6,6 +6,8 @@
 #include <string.h>
 #include <unistd.h>
 
+#include "config.h"
+
 #define INPUT_SIZE 16
 
 enum {
@@ -42,7 +44,7 @@ main(int argc, char *argv[])
 {
 	int opt, mode;
 	char input[INPUT_SIZE];
-	float temp;
+	float temp, res;
 	char *endptr;
 
 	mode = CELS_MODE;
@@ -66,10 +68,13 @@ main(int argc, char *argv[])
 		die("%s is not a number.", input);
 
 	if (mode == FAHR_MODE)
-		printf("%fºF = %fºC", temp, (temp - 32) * 5 / 9);
+		res = (temp - 32) * 5 / 9;
 	else
-		printf("%fºC = %fºF", temp, temp * 9 / 5 + 32);
+		res = temp * 9 / 5 + 32;
 
+	printf("%." OUTPUT_PREC "fº%c", temp, (mode == FAHR_MODE) ? 'F' : 'C');
+	printf(" = ");
+	printf("%." OUTPUT_PREC "fº%c", res, (mode == FAHR_MODE) ? 'C' : 'F');
 	putchar('\n');
 
 	return 0;
