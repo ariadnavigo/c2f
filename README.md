@@ -19,40 +19,27 @@ $ make
 
 Customize the build process by changing ``config.mk`` to suit your needs.
 
-## Usage
+## Install
 
-c2f accepts this syntax:
-
-```
-$ c2f [-fs]
-```
-
-By default, c2f converts from Celsius into Fahrenheit, reading the temperature
-from standard input. The result is printed to standard output.
+You may install c2f by running the following command as root:
 
 ```
-$ echo '28' | c2f
-28.00ºC = 82.40ºF
+# make install
 ```
 
-To convert the other way around, namely from Fahrenheit into Celsius, use the 
-``-f`` option.
+This will install the binary under ``$PREFIX/bin``, as defined by your 
+environment, or ``/usr/local/bin`` by default. The Makefile supports the 
+``$DESTDIR`` variable as well.
 
-```
-$ echo '70' | c2f -f
-70.00ºF = 21.11ºC
-```
+## Contributing
 
-By using the ``-s`` option, c2f will only print the final result:
+All contributions are welcome! If you wish to send in patches, ideas, or report
+a bug, you may do so by sending an email to the 
+[c2f-devel](https://lists.sr.ht/~arivigo/c2f-devel) mailing list.
 
-```
-$ echo '19' | c2f -s
-66.20ºF
-```
-
-Decimal precision in output is controlled by setting the ``OUTPUT_PREC`` macro 
-in a file named ``config.h``. If not present, the default in ``config.def.h``
-is used.
+If interested in getting some news from the project, you may also want to 
+subscribe to the low-volume 
+[c2f-announce](https://lists.sr.ht/~arivigo/c2f-announce) mailing list!
 
 ## License
 

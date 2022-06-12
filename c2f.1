@@ -1,0 +1,68 @@
+.TH C2F 1 c2f\-VERSION
+.SH NAME
+.PP
+c2f \- Celsius/Fahrenheit converter
+.SH SYNOPSIS
+.PP
+.B c2f
+.RB [ \-fs ]
+.SH DESCRIPTION
+.PP
+.B c2f 
+converts temperature units between Celsius and Fahrenheit.
+By default,
+.B cf2
+takes a temperature value in Celsius from standard input
+and returns the corresponding value in Fahrenheit.
+To convert from Fahrenheit to Celsius,
+pass the option
+.I \-f.
+.PP
+
+.SH OPTIONS
+.TP
+.B \-f
+Convert from Fahrenheit to Celsius.
+.TP
+.B \-s
+Return only the converted value in short-form.
+.SH EXIT STATUS
+.PP
+Upon successful execution
+.B c2f
+returns 0 as its exit status.
+Otherwise, an exit status greater than zero is returned.
+.SH EXAMPLES
+.PP
+Converting 21ºC into Fahrenheit:
+.PP
+.nf
+.RS
+.RB $ " echo '21' | c2f"
+.br
+21.00ºC = 69.80ºC
+.RE
+.fi
+.PP
+Converting -5ºF into Celsius:
+.PP
+.nf
+.RS
+.RB $ " echo '-5' | c2f -f"
+.br
+-21.00ºF = -29.44ºC
+.RE
+.fi
+.PP
+Converting -5ºF into Celsius, using short-form output:
+.PP
+.nf
+.RS
+.RB $ " echo '-5' | c2f -f -s"
+.br
+-29.44ºC
+.RE
+.fi
+.SH SEE ALSO
+.PP
+.BR units (1)
