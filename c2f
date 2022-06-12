@@ -1,0 +1,27 @@
+#!/bin/sh
+# See LICENSE file for copyright and license details.
+
+die() {
+	echo "$1" >&2
+	exit 1
+}
+
+usage() {
+	die 'c2f [-f] num'
+}
+
+while getopts :f opt; do
+	case "$opt" in
+	f)	fahr='t' ;;
+	?)	usage ;;
+	esac
+done
+
+shift $((OPTIND - 1))
+! [ "$1" ] && usage
+
+if [ "$fahr" ]; then
+	printf "%dºF = %dºC\n" "$1" $((($1 - 32) * 5/9))
+else
+	printf "%dºC = %dºF\n" "$1" $(($1 * 9/5 + 32))
+fi
