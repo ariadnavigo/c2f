@@ -1,8 +1,7 @@
 # c2f - Celsius/Fahrenheit converter
 
 c2f converts temperature units between Celsius and Fahrenheit. c2f was born 
-from the utter shock of discovering that ``units(1)`` doesn't do this 
-conversion.
+from the utter shock of discovering that ``units(1)`` is terrible at this.
 
 ## Build
 
