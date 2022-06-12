@@ -19,6 +19,9 @@ $ make
 
 Customize the build process by changing ``config.mk`` to suit your needs.
 
+c2f is configured by setting variables in ``config.h``, using ``config.def.h`` 
+as a template.
+
 ## Install
 
 You may install c2f by running the following command as root:
