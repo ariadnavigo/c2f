@@ -24,7 +24,7 @@ Customize the build process by changing ``config.mk`` to suit your needs.
 c2f accepts this syntax:
 
 ```
-$ c2f [-f]
+$ c2f [-fs]
 ```
 
 By default, c2f converts from Celsius into Fahrenheit, reading the temperature
@@ -41,6 +41,13 @@ To convert the other way around, namely from Fahrenheit into Celsius, use the
 ```
 $ echo '70' | c2f -f
 70.00ºF = 21.11ºC
+```
+
+By using the ``-s`` option, c2f will only print the final result:
+
+```
+$ echo '19' | c2f -s
+66.20ºF
 ```
 
 Decimal precision in output is controlled by setting the ``OUTPUT_PREC`` macro 

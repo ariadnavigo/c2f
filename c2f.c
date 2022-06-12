@@ -15,6 +15,11 @@ enum {
 	FAHR_MODE
 };
 
+enum {
+	OUT_LONG,
+	OUT_SHORT
+};
+
 static void die(const char *fmt, ...);
 static void usage(void);
 
@@ -36,22 +41,26 @@ die(const char *fmt, ...)
 static void
 usage(void)
 {
-	die("usage: c2f [-f]");
+	die("usage: c2f [-fs]");
 }
 
 int 
 main(int argc, char *argv[])
 {
-	int opt, mode;
+	int opt, mode, out_mode;
 	char input[INPUT_SIZE];
 	float temp, res;
 	char *endptr;
 
 	mode = CELS_MODE;
-	while ((opt = getopt(argc, argv, ":f")) != -1) {
+	out_mode = OUT_LONG;
+	while ((opt = getopt(argc, argv, ":fs")) != -1) {
 		switch (opt) {
 		case 'f':
 			mode = FAHR_MODE;
+			break;
+		case 's':
+			out_mode = OUT_SHORT;
 			break;
 		default:
 			usage();
@@ -72,8 +81,13 @@ main(int argc, char *argv[])
 	else
 		res = temp * 9 / 5 + 32;
 
+	if (out_mode == OUT_SHORT)
+		goto print_result;
+
 	printf("%." OUTPUT_PREC "fº%c", temp, (mode == FAHR_MODE) ? 'F' : 'C');
 	printf(" = ");
+
+print_result:
 	printf("%." OUTPUT_PREC "fº%c", res, (mode == FAHR_MODE) ? 'C' : 'F');
 	putchar('\n');
 
