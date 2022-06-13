@@ -25,7 +25,7 @@ pass the option
 Convert from Fahrenheit to Celsius.
 .TP
 .B \-s
-Return only the converted value in short-form.
+Return only the converted value, without any unit symbol.
 .SH EXIT STATUS
 .PP
 Upon successful execution
@@ -40,7 +40,7 @@ Converting 21ºC into Fahrenheit:
 .RS
 .RB $ " echo '21' | c2f"
 .br
-21.00ºC = 69.80ºC
+69.80ºC
 .RE
 .fi
 .PP
@@ -50,7 +50,7 @@ Converting -5ºF into Celsius:
 .RS
 .RB $ " echo '-5' | c2f -f"
 .br
--21.00ºF = -29.44ºC
+-29.44ºC
 .RE
 .fi
 .PP
@@ -60,7 +60,7 @@ Converting -5ºF into Celsius, using short-form output:
 .RS
 .RB $ " echo '-5' | c2f -f -s"
 .br
--29.44ºC
+-29.44
 .RE
 .fi
 .SH SEE ALSO
