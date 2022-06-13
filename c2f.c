@@ -81,14 +81,16 @@ main(int argc, char *argv[])
 	else
 		res = temp * 9 / 5 + 32;
 
+	printf("%." OUTPUT_PREC "f", res);
 	if (out_mode == OUT_SHORT)
-		goto print_result;
+		goto skip_unit;
 
-	printf("%." OUTPUT_PREC "fº%c", temp, (mode == FAHR_MODE) ? 'F' : 'C');
-	printf(" = ");
-
-print_result:
-	printf("%." OUTPUT_PREC "fº%c", res, (mode == FAHR_MODE) ? 'C' : 'F');
+	if (mode == FAHR_MODE) 
+		printf("ºC");
+	else
+		printf("ºF");
+	
+skip_unit:
 	putchar('\n');
 
 	return 0;
