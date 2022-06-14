@@ -20,7 +20,7 @@ options:
 ${OBJ}: config.mk
 
 c2f: ${OBJ}
-	${CC} -o $@ ${OBJ} ${LDFLAGS}
+	${CC} -o $@ ${OBJ} ${LDFLAGS} ${LIBS}
 
 clean:
 	rm -f c2f ${OBJ}
