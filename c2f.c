@@ -9,6 +9,9 @@
 
 #include "config.h"
 
+#define CELS2FAHR(temp) temp * 9 / 5 + 32
+#define FAHR2CELS(temp) (temp - 32) * 5 / 9
+
 #define INPUT_SIZE 16
 
 enum {
@@ -98,9 +101,9 @@ main(int argc, char *argv[])
 		die("%s is not a number.", input);
 
 	if (mode == FAHR_MODE)
-		res = (temp - 32) * 5 / 9;
+		res = FAHR2CELS(temp);
 	else
-		res = temp * 9 / 5 + 32;
+		res = CELS2FAHR(temp);
 
 	printf("%." OUTPUT_PREC "f", res);
 	if (out_mode == OUT_SHORT)
