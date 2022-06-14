@@ -96,6 +96,9 @@ main(int argc, char *argv[])
 			input[strlen(input) - 1] = '\0';
 	}
 
+	if (strlen(input) == 0)
+		return 0;
+
 	temp = strtof(input, &endptr);
 	if (endptr[0] != '\0')
 		die("%s is not a number.", input);
