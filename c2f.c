@@ -1,5 +1,6 @@
 /* See LICENSE file for copyright and license details. */
 
+#include <sline.h>
 #include <stdarg.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -21,7 +22,10 @@ enum {
 };
 
 static void die(const char *fmt, ...);
+static void cleanup(void);
 static void usage(void);
+
+static int sline_mode;
 
 static void
 die(const char *fmt, ...)
@@ -39,6 +43,13 @@ die(const char *fmt, ...)
 }
 
 static void
+cleanup(void)
+{
+	if (sline_mode > 0)
+		sline_end();
+}
+
+static void
 usage(void)
 {
 	die("usage: c2f [-fs]");
@@ -51,6 +62,8 @@ main(int argc, char *argv[])
 	char input[INPUT_SIZE];
 	float temp, res;
 	char *endptr;
+
+	atexit(cleanup);
 
 	mode = CELS_MODE;
 	out_mode = OUT_LONG;
@@ -68,9 +81,17 @@ main(int argc, char *argv[])
 		}
 	}
 
-	fgets(input, INPUT_SIZE, stdin);
-	if (input[strlen(input) - 1] == '\n')
-		input[strlen(input) - 1] = '\0';
+	if ((sline_mode = isatty(STDIN_FILENO)) > 0) {
+		if (sline_setup(0) < 0)
+			die("sline: %s.", sline_errmsg());
+		sline_set_prompt((mode == FAHR_MODE) ? "ºF: " : "ºC: ");
+		sline(input, INPUT_SIZE, NULL);
+		sline_end();
+	} else {
+		fgets(input, INPUT_SIZE, stdin);
+		if (input[strlen(input) - 1] == '\n')
+			input[strlen(input) - 1] = '\0';
+	}
 
 	temp = strtof(input, &endptr);
 	if (endptr[0] != '\0')
