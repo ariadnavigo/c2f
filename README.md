@@ -3,6 +3,8 @@
 c2f converts temperature units between Celsius and Fahrenheit. c2f was born 
 from the utter shock of discovering that ``units(1)`` is terrible at this.
 
+**Be aware this is a project in an early development stage.**
+
 ## Build
 
 c2f requires:
