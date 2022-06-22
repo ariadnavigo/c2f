@@ -21,7 +21,7 @@ $ echo 21 | c2f
 69.80ºF
 ```
 
-You may check ``man c2f`` for further usage information. 
+You may check the ``c2f(1)`` manpage for further usage information. 
 
 ## Build
 
