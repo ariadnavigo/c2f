@@ -5,6 +5,24 @@ from the utter shock of discovering that ``units(1)`` is terrible at this.
 
 **Be aware this is a project in an early development stage.**
 
+## Basic usage
+
+c2f reads a temperature from standard input, either interactively or from a
+pipe, and outputs the converted value to standard output.
+
+```
+$ c2f
+ºC: 23
+73.40ºF
+$ c2f -f
+ºF: 212
+100.00ºC
+$ echo 21 | c2f
+69.80ºF
+```
+
+You may check ``man c2f`` for further usage information. 
+
 ## Build
 
 c2f requires:
