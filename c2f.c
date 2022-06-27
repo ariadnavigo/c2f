@@ -79,7 +79,7 @@ main(int argc, char *argv[])
 			out_mode = OUT_SHORT;
 			break;
 		case 'v':
-			printf("c2f " VERSION "\n");
+			printf("c2f %s\n", VERSION);
 			return 0;
 		default:
 			usage();
