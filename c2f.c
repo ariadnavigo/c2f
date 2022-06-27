@@ -55,7 +55,7 @@ cleanup(void)
 static void
 usage(void)
 {
-	die("usage: c2f [-fs]");
+	die("usage: c2f [-fsv]");
 }
 
 int 
@@ -70,7 +70,7 @@ main(int argc, char *argv[])
 
 	mode = CELS_MODE;
 	out_mode = OUT_LONG;
-	while ((opt = getopt(argc, argv, ":fs")) != -1) {
+	while ((opt = getopt(argc, argv, ":fsv")) != -1) {
 		switch (opt) {
 		case 'f':
 			mode = FAHR_MODE;
@@ -78,6 +78,9 @@ main(int argc, char *argv[])
 		case 's':
 			out_mode = OUT_SHORT;
 			break;
+		case 'v':
+			printf("c2f " VERSION "\n");
+			return 0;
 		default:
 			usage();
 			break;
