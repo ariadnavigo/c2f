@@ -29,7 +29,7 @@ c2f requires:
 
 1. A POSIX-like system
 2. A C99 compiler
-3. [sline](https://sr.ht/~arivigo/sline)
+3. [sline](https://github.com/ariadnavigo/sline)
 
 Build by using:
 
@@ -53,16 +53,6 @@ You may install c2f by running the following command as root:
 This will install the binary under ``$PREFIX/bin``, as defined by your 
 environment, or ``/usr/local/bin`` by default. The Makefile supports the 
 ``$DESTDIR`` variable as well.
-
-## Contributing
-
-All contributions are welcome! If you wish to send in patches, ideas, or report
-a bug, you may do so by sending an email to the 
-[c2f-devel](https://lists.sr.ht/~arivigo/c2f-devel) mailing list.
-
-If interested in getting some news from the project, you may also want to 
-subscribe to the low-volume 
-[c2f-announce](https://lists.sr.ht/~arivigo/c2f-announce) mailing list!
 
 ## License
 
