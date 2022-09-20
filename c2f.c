@@ -1,5 +1,6 @@
 /* See LICENSE file for copyright and license details. */
 
+#include <stddef.h> /* Dependency for sline.h */
 #include <sline.h>
 #include <stdarg.h>
 #include <stdio.h>
@@ -88,7 +89,8 @@ main(int argc, char *argv[])
 	}
 
 	if ((sline_mode = isatty(STDIN_FILENO)) > 0) {
-		if (sline_setup(0) < 0)
+		sline_history = 0;
+		if (sline_setup() < 0)
 			die("sline: %s.", sline_errmsg());
 		sline_set_prompt((mode == FAHR_MODE) ? "ºF: " : "ºC: ");
 		sline(input, INPUT_SIZE, NULL);
